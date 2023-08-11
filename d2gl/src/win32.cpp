@@ -188,6 +188,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				if (App.window.fullscreen && App.window.auto_minimize)
 					PostMessage(hWnd, WM_SYSCOMMAND, SC_MINIMIZE, 0);
 				setCursorUnlock();
+				
+				int x = *d2::mouse_x;
+				int y = *d2::mouse_y;
+				LPARAM xy = MAKELPARAM(x, y);
+				PostMessage(hWnd, WM_LBUTTONUP, 0, xy);
 			}
 			return 0;
 		}
